@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Just Dey Play!</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
 </head>
 
 <body>
@@ -299,34 +301,33 @@
     </style>
 
     <script>
-        document.getElementById('rotateButton').addEventListener('click', function () {
-            var bases = [
-                { element: document.querySelector('.base'), newImage: "url('2.jpg')", className: 'rotate', duration: 500 },
-                { element: document.querySelector('.base1'), newImage: "url('2.jpg')", className: 'rotate1', duration: 1000 },
-                { element: document.querySelector('.base2'), newImage: "url('2.jpg')", className: 'rotate2', duration: 2000 }
-            ];
 
-            bases.forEach(function (base) {
-                base.element.classList.add(base.className);
+document.getElementById('rotateButton').addEventListener('click', function () {
+    var bases = [
+        { element: document.querySelector('.base'), className: 'rotate', duration: 500 },
+        { element: document.querySelector('.base1'), className: 'rotate1', duration: 1000 },
+        { element: document.querySelector('.base2'), className: 'rotate2', duration: 2000 }
+    ];
 
-                var fadeDuration = 100; // duration for fade out and fade in
-                var timeToStartFade = base.duration * (200 / 360) - fadeDuration;
-                var timeToChangeImage = timeToStartFade + fadeDuration;
+    function getRandomImage() {
+        var randomNumber = Math.floor(Math.random() * 20) + 1; // Generates a number between 1 and 10
+        return `url('${randomNumber}.jpg')`;
+    }
 
-                setTimeout(function () {
-                }, timeToStartFade);
+    var newImage = getRandomImage(); // Get a random image for all bases
 
-                setTimeout(function () {
-                    base.element.style.backgroundImage = base.newImage;
-                }, timeToChangeImage);
+    bases.forEach(function (base) {
+        base.element.classList.add(base.className);
 
-                base.element.addEventListener('animationend', function () {
-                    base.element.classList.remove(base.className);
-                });
-            });
+        setTimeout(function () {
+            base.element.style.backgroundImage = newImage;
+        }, base.duration * (200 / 360));
+
+        base.element.addEventListener('animationend', function () {
+            base.element.classList.remove(base.className);
         });
-
-
+    });
+});
 
     </script>
 

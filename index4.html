@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Dey Play!</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="particles-js"></div>
+
+
+    <div class="text-top-wrapper">
+        <div class="flex">
+            <p>Logo</p>
+            <p>Giza</p>
+        </div>
+        <div class="flex">
+            <p>Dey Play</p>
+            <p>My Fans</p>
+        </div>
+        <div class="flex">
+            <p>12 Jewels</p>
+            <p>Cheat On Me</p>
+            <img class="icon" src="icon.svg" alt="search icon" />
+        </div>
+    </div>
+
+
+    <div class="text-center">
+        <div>
+            <div>
+                <p class="main-text">SILENT NGITH</p>
+            </div>
+            <div>
+                <p>LET ME TELL YOU SOMETHING</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <button id="rotateButton">Spin</button>
+
+    <div class="overlay"></div>
+
+    <div class="base2"></div>
+    <div class="base1"></div>
+    <div class="base"></div>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900");
+        @import url("https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300italic,regular,italic,500,500italic,600,600italic,700,700italic");
+
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin: 0;
+            font-family: Inter, sans-serif;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+        }
+
+
+        p {
+            font-size: 16px;
+            letter-spacing: 1.2;
+            line-height: 1.6;
+        }
+
+        .text-top-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px 80px;
+            position: fixed;
+            width: calc(100% - 180px);
+            color: white;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+        }
+
+        .text-center {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px 80px;
+            position: fixed;
+            width: calc(100% - 180px);
+            color: white;
+            z-index: 9999;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .main-text {
+            letter-spacing: 32px;
+            font-size: 92px;
+            font-family: "Cormorant Garamond", sans-serif;
+        }
+
+        @media (max-width: 1000px) {
+            .main-text {
+                font-size: 32px;
+                letter-spacing: 24px;
+            }
+        }
+
+        .icon {
+            height: 34px;
+            width: 34px;
+            object-fit: cover;
+        }
+
+
+        .flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .overlay {
+            height: 100%;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            overflow: hidden;
+            margin: 0;
+            z-index: 9888;
+            background-color: rgba(0, 0, 0, 0.258);
+        }
+
+
+
+
+
+        .base2 {
+            border-radius: 50%;
+            background-image: url('night/1.avif');
+            background-size: 1000px 1000px;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 1000px;
+            height: 1000px;
+            transform: scale(200%);
+            transform-origin: center;
+            position: fixed
+        }
+
+        .base1 {
+            border-radius: 50%;
+            background-image: url('night/1.avif');
+            background-size: 2000px 2000px;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 1000px;
+            height: 1000px;
+            transform: scale(100%);
+            transform-origin: center;
+            position: fixed
+        }
+
+        .base1::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.14);
+            z-index: 10;
+        }
+
+        .base {
+            border-radius: 50%;
+            background-image: url('night/1.avif');
+            background-size: 4000px 4000px;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 1000px;
+            height: 1000px;
+            transform: scale(50%);
+            transform-origin: center;
+            position: fixed
+        }
+
+
+        button {
+            position: fixed;
+            bottom: 80px;
+            right: 80px;
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            border: none;
+            background-color: white;
+            color: black;
+            z-index: 99999;
+        }
+
+
+        .rotate2 {
+            animation: rotateImage2 2s linear forwards;
+        }
+
+
+        .rotate1 {
+            animation: rotateImage1 1.5s linear forwards;
+        }
+
+
+        .rotate {
+            animation: rotateImage 1s linear forwards;
+        }
+
+
+        @keyframes rotateImage2 {
+            0% {
+                transform: scale(200%) rotate(0deg);
+                opacity: 1;
+            }
+
+            25% {
+                opacity: .5;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            75% {
+                opacity: .5;
+            }
+
+            100% {
+                transform: scale(200%) rotate(360deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes rotateImage1 {
+            0% {
+                transform: scale(100%) rotate(0deg);
+                opacity: 1;
+            }
+
+            25% {
+                opacity: .5;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            75% {
+                opacity: .5;
+            }
+
+            100% {
+                transform: scale(100%) rotate(360deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes rotateImage {
+            0% {
+                transform: scale(50%) rotate(0deg);
+                opacity: 1;
+            }
+
+            25% {
+                opacity: .5;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            75% {
+                opacity: .5;
+            }
+
+            100% {
+                transform: scale(50%) rotate(360deg);
+                opacity: 1;
+            }
+        }
+    </style>
+
+    <script>
+
+        particlesJS("particles-js", {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 1000
+                    }
+                },
+                color: {
+                    value: "#ffff00"
+                },
+                shape: {
+                    type: "circle"
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: {
+                        enable: false
+                    }
+                },
+                size: {
+                    value: 2,
+                    random: true,
+                    anim: {
+                        enable: false
+                    }
+                },
+                line_linked: {
+                    enable: false
+                },
+                move: {
+                    speed: 2
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "bubble"
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: "repulse"
+                    },
+                    resize: true
+                },
+                modes: {
+                    bubble: {
+                        distance: 200,
+                        size: 3,
+                        duration: 2,
+                        opacity: 0.8,
+                        speed: 3
+                    },
+                }
+            },
+            retina_detect: true
+        });
+
+        document.getElementById('rotateButton').addEventListener('click', function () {
+            var bases = [
+                { element: document.querySelector('.base'), className: 'rotate', duration: 500 },
+                { element: document.querySelector('.base1'), className: 'rotate1', duration: 1000 },
+                { element: document.querySelector('.base2'), className: 'rotate2', duration: 2000 }
+            ];
+
+            function getRandomImage() {
+                var randomNumber = Math.floor(Math.random() * 20) + 1;
+                return `url('night/${randomNumber}.avif')`;
+            }
+
+            var newImage = getRandomImage();
+
+
+            bases.forEach(function (base) {
+                base.element.classList.add(base.className);
+
+                setTimeout(function () {
+                    base.element.style.backgroundImage = newImage;
+                }, base.duration * (200 / 360));
+
+                base.element.addEventListener('animationend', function () {
+                    base.element.classList.remove(base.className);
+                });
+            });
+
+            gsap.fromTo(".text-center div div p",
+                { opacity: 0 },
+                { opacity: 1, duration: 1, stagger: 0.5, ease: "power2.inOut" }
+            );
+        });
+
+    </script>
+
+</body>
+
+</html>
